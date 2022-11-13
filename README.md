@@ -1,4 +1,4 @@
-# metaporter-host
+# metaporter_host
 
 Usage: sudo docker run -it --name metaporter-host -v /<path to metaporter_dev>/metaporter_dev:/home/metaporter_dev metaporter-host:1.0
 
@@ -8,13 +8,19 @@ https://docs.ros.org/en/foxy/Tutorials/Beginner-Client-Libraries/Creating-A-Work
 Steps to build and run the package:
 (make sure to build a Workspace on /home/metaporter_dev)
 Under /home/metaporter_dev directory, do:
-
+```
 source /home/metaporter_dev/.bashrc
-
+```
+```
 source /opt/ros/foxy/setup.bash
-
+```
+```
 colcon build
+```
 
+```
 . install/local_setup.bash
-
+```
+```
 ros2 run metaporter_host pose_subscriber
+```
