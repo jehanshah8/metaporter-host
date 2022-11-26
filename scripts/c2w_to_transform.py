@@ -63,7 +63,9 @@ def write_to_transforms(up,
             for g in out["frames"]:
                 mg = g["transform_matrix"][0:3, :]
                 p, w = closest_point_2_lines(mf[:, 3], mf[:, 2], mg[:, 3], mg[:, 2])
+                print("W")
                 print(w)
+
                 if w > 0.00001:
                     totp += p * w
                     totw += w

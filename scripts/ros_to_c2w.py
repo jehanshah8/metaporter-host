@@ -82,11 +82,11 @@ def create_c2w_matrix(position, orientation, img_path, c2w_out, up_file):
 
     m = np.concatenate([np.concatenate([R, t], 1), bottom], 0)
 
-    print(m)
+
 
     c2w = np.linalg.inv(m)
 
-    print(c2w)
+
 
     if not keep_colmap_coords:
         c2w[0:3, 2] *= -1  # flip the y and z axis
@@ -96,6 +96,7 @@ def create_c2w_matrix(position, orientation, img_path, c2w_out, up_file):
 
         up += c2w[0:3, 1]
 
+    print(c2w)
     frame = {"file_path": '0001.jpeg', "sharpness": sharpness, "transform_matrix": c2w.tolist()}
     out["frames"].append(frame)
 
@@ -143,7 +144,7 @@ def write_to_transforms(up,
             for g in out["frames"]:
                 mg = g["transform_matrix"][0:3, :]
                 p, w = closest_point_2_lines(mf[:, 3], mf[:, 2], mg[:, 3], mg[:, 2])
-                print(w)
+
                 if w > 0.00001:
                     totp += p * w
                     totw += w
@@ -205,6 +206,11 @@ if __name__ == "__main__":
     orientation = [0.0157856, 0.0121887, 0.00470192, 0.99979]
 
     create_c2w_matrix(position, orientation, '0001.jpeg', c2w_out, up_file)
+    create_c2w_matrix(position, orientation, '0001.jpeg', c2w_out, up_file)
+
+    position = [-0.0170282, 0.101679, 0.032355]
+    orientation = [0.0197856, 0.0121887, 0.01470192, 0.77979]
+
     create_c2w_matrix(position, orientation, '0001.jpeg', c2w_out, up_file)
 
     # write_to_transforms(up, OUT_PATH='transforms.json')
