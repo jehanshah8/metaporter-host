@@ -11,9 +11,7 @@ Under /home/metaporter_dev directory, do:
 ```
 source /home/metaporter_dev/.bashrc
 ```
-```
-source /opt/ros/foxy/setup.bash
-```
+
 ```
 colcon build
 ```
